@@ -6,7 +6,7 @@
     <% @tickets.each do |ticket|%> 
     
     <li class="ticket-list">
-    <a href="/lists/<%= ticket["id"] %>"><%= ticket['subject'] %> </a>
+    <a href="/lists/<%= ticket.id %>"><%= ticket.subject %> </a>
     
     </li>
     <%end %>    
