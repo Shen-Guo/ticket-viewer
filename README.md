@@ -70,7 +70,7 @@ main.rb --- app entry point
 
 </pre>
 
-## challenges
+## Challenges
 
 #### Connecting to Zendesk API with Authentication
 <pre>
