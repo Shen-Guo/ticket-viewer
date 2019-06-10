@@ -1,0 +1,55 @@
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* styling for layout page */
+
+body {
+  padding: 10px;
+  background-image: url(/images/background.jpg);
+  background-size: cover;
+}
+
+
+
+/* styling for lists page */
+.lists-container li{
+  list-style: none;
+}
+
+.lists-container ul{
+  padding-left: 0;
+ }
+
+.lists-container a{
+ text-decoration: none; 
+ color: rgba(12, 59, 87, 0.925);
+ font-size: 1rem;
+}
+.lists-container a:hover{
+  font-size: 1.1rem;
+  color: rgb(119, 80, 226) ;
+}
+.lists-container a:visited{
+  
+  color: rgb(160, 60, 14) ;
+}
+.lists-container .page-index a{
+  color: black;
+  font-weight: 600;
+}
+/* styling for ticket-detail page */
+.ticket-detail-container a{
+  text-decoration: none; 
+ color: rgba(12, 59, 87, 0.925);
+ font-size: 1rem;
+}
+.ticket-detail-container a:hover{
+  font-size: 1.1rem;
+  color: rgb(119, 80, 226) ;
+}
+.ticket-detail-container .subject{
+  font-weight: 600;
+  color: rgba(12, 59, 87, 0.925);
+}

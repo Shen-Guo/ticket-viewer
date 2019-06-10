@@ -1,5 +1,5 @@
 
 
-require './main'
+require "./main"
 
-run Sinatra::Application
+run TicketViewer.new

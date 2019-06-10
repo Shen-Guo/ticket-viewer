@@ -1,17 +1,19 @@
 #!/usr/bin/ruby
-require "httparty"
-require_relative "../models/Ticket"
-require_relative "../helpers/api_helper"
-
 require "sinatra/base"
+require "httparty"
+require_relative "../helpers/api_helper"
+require_relative "../helpers/logger_helper"
+require_relative "../models/ticket"
 
-class TicketController < Sinatra::Base
+class TicketViewer < Sinatra::Application
   get "/" do
     begin
       page_index = 1
       list_page(page_index)
       erb :lists
-    rescue
+    rescue => ex
+      Log.log_error(ex.message)
+      @error_message = ex.message
       erb :error
     end
   end
@@ -21,7 +23,9 @@ class TicketController < Sinatra::Base
       id = params[:id]
       detail_page(id)
       erb :ticket_detail
-    rescue
+    rescue => ex
+      Log.log_error(ex.message)
+      @error_message = ex.message
       erb :error
     end
   end
@@ -31,42 +35,63 @@ class TicketController < Sinatra::Base
       page_index = params[:page_index]
       list_page(page_index)
       erb :lists
-    rescue
+    rescue => ex
+      Log.log_error(ex.message)
+      @error_message = ex.message
       erb :error
     end
   end
-end
 
-def handle_ticket(res)
-  ticket_info = res["ticket"]
-  ticket = Ticket.new(ticket_info)
-end
-
-def handle_tickets(res)
-  tickets_info = res["tickets"]
-  @tickets = []
-  tickets_info.each do |ticket_info|
-    ticket = Ticket.new(ticket_info)
-    @tickets << ticket
+  def fetch_ticket(res)
+    if res.key?("ticket")
+      ticket_info = res["ticket"]
+      ticket = Ticket.new(ticket_info)
+    elsif res.key?("error")
+      raise res["error"]
+    else
+      raise "unknown error from API"
+    end
   end
-  @tickets
-end
 
-def list_page(page_index)
-  @page_index = page_index
-  @tickets_display_per_page = 25
-  url = "https://shenguo.zendesk.com/api/v2/tickets.json?page=#{@page_index}&per_page=#{@tickets_display_per_page}"
+  def fetch_tickets(res)
+    if res.key?("tickets")
+      tickets_info = res["tickets"]
+      @tickets = []
+      tickets_info.each do |ticket_info|
+        ticket = Ticket.new(ticket_info)
+        @tickets << ticket
+      end
+      @tickets
+    elsif res.key?("error")
+      raise res["error"]
+    else
+      raise "unknown error from API"
+    end
+  end
 
-  res = ApiHelper.get_res_from_api(url)
-  @tickets = handle_tickets(res)
-  @count = res["count"]
-  @pages = (@count.to_f / @tickets_display_per_page).ceil
-end
+  def get_user_name(user_id)
+    url = "https://shenguo.zendesk.com/api/v2/users/#{user_id}.json"
+    res = ApiHelper.get_res_from_api(url)
+    name = res["user"]["name"]
+  end
 
-def detail_page(id)
-  @id = id
-  url = "https://shenguo.zendesk.com/api/v2/tickets/#{@id}.json"
+  def list_page(page_index)
+    @page_index = page_index
+    @tickets_display_per_page = 25
+    url = "https://shenguo.zendesk.com/api/v2/tickets.json?page=#{@page_index}&per_page=#{@tickets_display_per_page}"
 
-  res = ApiHelper.get_res_from_api(url)
-  @ticket = handle_ticket(res)
+    res = ApiHelper.get_res_from_api(url)
+    @tickets = fetch_tickets(res)
+    @count = res["count"]
+    @pages = (@count.to_f / @tickets_display_per_page).ceil
+  end
+
+  def detail_page(id)
+    @id = id
+    url = "https://shenguo.zendesk.com/api/v2/tickets/#{@id}.json"
+
+    res = ApiHelper.get_res_from_api(url)
+    @ticket = fetch_ticket(res)
+    @ticket.requester_name = get_user_name(@ticket.requester_id)
+  end
 end

@@ -1,0 +1,25 @@
+E, [2019-06-10T12:01:47.677778 #9506] ERROR -- : page index is not valid
+E, [2019-06-10T12:49:49.783399 #9506] ERROR -- : undefined method `each' for nil:NilClass
+E, [2019-06-10T12:50:21.726249 #9506] ERROR -- : undefined method `each' for nil:NilClass
+E, [2019-06-10T12:50:30.141604 #9506] ERROR -- : undefined method `requester_id' for nil:NilClass
+E, [2019-06-10T14:33:38.866930 #13390] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:34:59.636936 #13390] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:36:19.594590 #13487] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:36:29.359552 #13487] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:42:03.696710 #13640] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:44:09.086652 #13696] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T14:45:25.374910 #13762] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T15:22:40.797890 #13762] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T15:22:43.838120 #13762] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T15:24:10.890683 #15408] ERROR -- : Couldn't authenticate you
+E, [2019-06-10T15:25:21.793715 #15447] ERROR -- : undefined method `requester_name' for "Shen Guo":String
+E, [2019-06-10T15:27:05.585410 #15542] ERROR -- : undefined method `requester_name' for "Shen Guo":String
+E, [2019-06-10T15:27:15.476832 #15542] ERROR -- : undefined method `requester_name' for "Sample customer":String
+E, [2019-06-10T15:30:09.998743 #15903] ERROR -- : undefined method `requester_name' for "Shen Guo":String
+E, [2019-06-10T15:31:05.876615 #15945] ERROR -- : undefined method `requester_id' for "Shen Guo":String
+E, [2019-06-10T15:31:15.524364 #15945] ERROR -- : undefined method `requester_id' for "Shen Guo":String
+E, [2019-06-10T15:33:39.696622 #16128] ERROR -- : undefined method `requester_id' for "Shen Guo":String
+E, [2019-06-10T15:34:37.197765 #16167] ERROR -- : undefined method `subject' for "Shen Guo":String
+E, [2019-06-10T15:36:22.464877 #16241] ERROR -- : undefined local variable or method `ticket' for #<TicketViewer:0x00007f3f84018180>
+Did you mean?  @ticket
+E, [2019-06-10T16:03:20.441340 #16275] ERROR -- : RecordNotFound

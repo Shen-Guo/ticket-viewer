@@ -1,22 +1,18 @@
-<h1>Mobile Ticket Viewer</h1>
-<h3>Search Result: <%= @count %> tickets in total, <%= @tickets_display_per_page %> on this page</h3>
+<div class="lists-container">
+  <h3>Search Result: <%= @count %> tickets in total, <%= @tickets_display_per_page %> on this page</h3>
+  <ul> 
+    <% @tickets.each do |ticket|%>      
+      <li class="ticket-list">
+        <a href="/lists/<%= ticket.id %>"><%= ticket.subject %> </a>  
+      </li>
+      <%end %>    
+  </ul>
+  <div class="page-index">
+    <% for i in 1..@pages%>
+      <a href="/lists/pages/<%= i %>"><%= i %></a>  
+    <% end %>    
+  </div>
 
-
-<ul> 
-    <% @tickets.each do |ticket|%> 
-    
-    <li class="ticket-list">
-    <a href="/lists/<%= ticket.id %>"><%= ticket.subject %> </a>
-    
-    </li>
-    <%end %>    
-</ul>
-<div class="pages">
-  <% for i in 1..@pages%>
-   <a href="/lists/pages/<%= i %>"><%= i %></a>
-  
-   <% end %>
-    
 </div>
 
 
