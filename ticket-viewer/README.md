@@ -38,6 +38,17 @@ I have tried the unit test using minitest for the ticket data model and getting 
 I have done some research on the rack but didn't figure out how to test the pages.
 
 Testing is really important during the whole development process. every time when new feature added, new function abstracted, the test can make sure the changes don't break the whole program.
+
+To run the test navigate to test folder and type in cmd line:
+ruby apihelper_test.rb 
+or 
+ruby ticket_test.rb
+</pre>
+
+#### About Authentication
+<pre>
+first commit using basic authentication, then change to API token which is more secure.
+Normally the token should not be exposed, but be hidden using environment variables.
 </pre>
 #### App Design Structure
 <pre>
