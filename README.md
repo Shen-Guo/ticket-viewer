@@ -6,6 +6,10 @@
 This app allows the user to request the tickets for their account.
 The home page displays tickets in a list. Clicking on the individual link will show the individual ticket details on another page.
 </pre>
+#### Screenshots
+![Image of screenshot](Screenshot1.png)    
+![Image of screenshot](Screenshot2.png)  
+
 
 #### How to use the program
 <pre>
